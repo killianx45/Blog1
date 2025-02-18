@@ -7,11 +7,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "backpack/crud": "^6.7",
+        "backpack/theme-tabler": "^1.2",
         "laravel/framework": "^11.31",
         "laravel/helpers": "^1.7",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
+        "backpack/generators": "^4.0",
         "fakerphp/faker": "^1.23",
         "laravel/breeze": "^2.3",
         "laravel/pail": "^1.1",

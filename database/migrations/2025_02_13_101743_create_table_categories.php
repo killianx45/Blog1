@@ -12,6 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Création de la table categories EN PREMIER
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
@@ -19,13 +20,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('categorie_post', function (Blueprint $table) {
-            $table->foreignId('categories_id')->constrained()->onDelete('cascade');
-            $table->foreignId('post_id')->constrained()->onDelete('cascade');
-            $table->primary(['categories_id', 'post_id']);
+        // Création de la table pivot APRÈS les deux tables
+        Schema::create('category_post', function (Blueprint $table) {
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('post_id')->constrained('posts')->onDelete('cascade');
+            $table->primary(['category_id', 'post_id']);
         });
 
-        // Insertion des 3 catégories demandées
         DB::table('categories')->insert([
             ['name' => 'Films', 'slug' => 'films'],
             ['name' => 'Natures', 'slug' => 'natures'],
@@ -38,8 +39,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('category_post');
+        Schema::dropIfExists('categories');
     }
 };

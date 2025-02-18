@@ -4,7 +4,7 @@
 <div class="container">
   <h1>Créer une nouvelle catégorie</h1>
 
-  <form action="{{ route('categories.store') }}" method="POST">
+  <form action="{{ route('category.store') }}" method="POST">
     @csrf
     <div class="form-group">
       <label for="name">Nom de la catégorie :</label>

@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categories;
+use App\Models\Category;
 
-class CategoriesControlleur extends Controller
+class CategoryControlleur extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Categories::all();
-        return view('categories.index', compact('categories'));
+        $category = Category::all();
+        return view('category.index', compact('category'));
     }
 
     /**
@@ -21,8 +21,8 @@ class CategoriesControlleur extends Controller
      */
     public function create()
     {
-        $categories = Categories::all();
-        return view('categories.create', compact('categories'));
+        $category = Category::all();
+        return view('category.create', compact('category'));
     }
 
     /**
@@ -34,12 +34,12 @@ class CategoriesControlleur extends Controller
             'name' => 'required|max:255',
         ]);
 
-        $categorie = new Categories();
-        $categorie->name = $request->name;
-        $categorie->slug = $request->slug;
-        $categorie->save();
+        $category = new Category();
+        $category->name = $request->name;
+        $category->slug = $request->slug;
+        $category->save();
 
-        return redirect()->route('categories.index')->with('success', 'Catégorie créée avec succès!');
+        return redirect()->route('category.index')->with('success', 'Catégorie créée avec succès!');
     }
 
     /**
@@ -49,9 +49,9 @@ class CategoriesControlleur extends Controller
     {
         //voir tous les posts de la catégorie
 
-        $categorie = Categories::find($id);
-        $posts = $categorie->posts;
-        return view('categories.show', compact('categorie', 'posts'));
+        $category = Category::find($id);
+        $posts = $category->posts;
+        return view('category.show', compact('category', 'posts'));
     }
 
     /**

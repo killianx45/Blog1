@@ -4,7 +4,7 @@ use App\Http\Controllers\CommentControlleur;
 use App\Http\Controllers\PostControlleur;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserControlleur;
-use App\Http\Controllers\CategoriesControlleur;
+use App\Http\Controllers\CategoryControlleur;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +28,6 @@ Route::get('show-post/{slug}', [PostControlleur::class, 'show_by_slug']);
 
 Route::resource('comments', CommentControlleur::class)->middleware(['auth']);
 
-Route::resource('categories', CategoriesControlleur::class);
+Route::resource('category', CategoryControlleur::class);
 
 require __DIR__ . '/auth.php';

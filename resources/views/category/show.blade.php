@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
 
-<h1 class="text-white">Posts dans la catégorie : {{ $categorie->name }}</h1>
+<h1 class="text-white">Posts dans la catégorie : {{ $category->name }}</h1>
 
 <div class="flex flex-wrap">
-  @foreach ($categorie->posts as $post)
+  @foreach ($category->posts as $post)
   <div class="max-w-sm m-4 overflow-hidden bg-white rounded shadow-lg dark:bg-gray-800">
     <div class="px-6 py-4">
       <h2 class="mb-2 text-xl font-bold text-gray-800 dark:text-white">{{ $post->title }}</h2>
