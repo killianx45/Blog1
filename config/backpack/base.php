@@ -191,4 +191,6 @@ return [
     */
 
     'token_username' => env('BACKPACK_TOKEN_USERNAME', false),
+
+    'login_redirect' => 'admin/dashboard',
 ];

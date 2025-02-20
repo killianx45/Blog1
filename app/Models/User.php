@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -56,5 +57,10 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany('App\Models\Comment', 'id_user');
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'ROLE_ADMIN';
     }
 }
