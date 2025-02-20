@@ -28,10 +28,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if ($request->user()->role === 'ROLE_ADMIN') {
-            return redirect()->intended(backpack_url('dashboard'));
-        }
-
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
