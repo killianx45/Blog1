@@ -12,7 +12,10 @@ return [
     'routes' => [
         'domain' => null,
         // Global middleware applied to every API Platform routes
-        // 'middleware' => []
+        'middleware' => [
+            'api',
+            \App\Http\Middleware\JwtMiddleware::class
+        ]
     ],
 
     'resources' => [
@@ -50,6 +53,7 @@ return [
         'pagination_maximum_items_per_page' => 30,
         'route_prefix' => '/api',
         'middleware' => [],
+        'security' => "is_granted('ROLE_ADMIN')",  // Sécurité par défaut pour toutes les ressources
     ],
 
     'pagination' => [
@@ -72,13 +76,13 @@ return [
 
     'swagger_ui' => [
         'enabled' => true,
-        //'apiKeys' => [
-        //    'api' => [
-        //        'type' => 'Bearer',
-        //        'name' => 'Authentication Token',
-        //        'in' => 'header'
-        //    ]
-        //],
+        'apiKeys' => [
+            'Authorization' => [
+                'type' => 'header',
+                'name' => 'Authorization',
+                'in' => 'header'
+            ]
+        ],
         //'oauth' => [
         //    'enabled' => true,
         //    'type' => 'oauth2',
