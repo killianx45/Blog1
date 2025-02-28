@@ -8,7 +8,6 @@
 
 @foreach ($posts as $post)
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-  @foreach ($posts as $post)
   <div class="max-w-sm overflow-hidden bg-white rounded shadow-lg dark:bg-gray-800">
     <div class="px-6 py-4">
       <h2 class="mb-2 text-xl font-bold text-gray-800 dark:text-white">{{ $post->title }}</h2>
@@ -31,7 +30,6 @@
       <a href="{{ route('posts.show', $post->id) }}">Voir le post</a>
     </button>
   </div>
-  @endforeach
 </div>
 @endforeach
 

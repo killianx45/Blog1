@@ -28,6 +28,13 @@ class Comment extends Model
     use CrudTrait;
     use HasFactory;
 
+    /**
+     * Les attributs qui doivent être cachés pour la sérialisation.
+     *
+     * @var array
+     */
+    protected $hidden = ['id_user', 'author'];
+
     public function post()
     {
         return $this->belongsTo('App\Models\Post', 'id_post');

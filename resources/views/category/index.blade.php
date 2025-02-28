@@ -19,7 +19,7 @@
         </p>
       </div>
       <button class="w-full py-2 text-white bg-blue-500 hover:bg-blue-700">
-        <a href="{{ route('categories.show', $cat->id) }}">Voir la catégorie</a>
+        <a href="{{ route('category.show', $cat->id) }}">Voir la catégorie</a>
       </button>
     </div>
   </div>
