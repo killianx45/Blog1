@@ -23,6 +23,7 @@ class JwtMiddleware
         'api/contexts',
         'api/.well-known',
         'api/refresh',
+        'api/graphql',
     ];
 
     /**

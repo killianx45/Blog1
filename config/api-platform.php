@@ -64,7 +64,7 @@ return [
     ],
 
     'graphql' => [
-        'enabled' => false,
+        'enabled' => true,
         'nesting_separator' => '__',
         'introspection' => ['enabled' => true]
     ],

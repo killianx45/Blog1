@@ -12,6 +12,7 @@ use ApiPlatform\Metadata\Delete;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 #[ApiResource(
     operations: [
@@ -27,13 +28,20 @@ class Comment extends Model
 {
     use CrudTrait;
     use HasFactory;
-
     /**
-     * Les attributs qui doivent être cachés pour la sérialisation.
-     *
-     * @var array
+     * Attributs cachés en fonction du rôle de l'utilisateur
+     * 
+     * @return array
      */
-    protected $hidden = ['id_user', 'author'];
+
+    protected $hidden = [];
+    public function getHidden()
+    {
+        if (Auth::check() && Auth::user()->role === 'ROLE_ADMIN') {
+            return [];
+        }
+        return ['id_user', 'author'];
+    }
 
     public function post()
     {
